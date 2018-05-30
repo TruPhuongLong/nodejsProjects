@@ -5,7 +5,10 @@ const command = yargs.argv;
 
 // validator input:
 const input = validator(command);
-if(input){
-    const {from, to} = input;
+const { error, from, to } = input;
+if(error){
+    console.log(error)
+}else{
     console.log(`from: ${from}, to: ${to}`)
 }
+
