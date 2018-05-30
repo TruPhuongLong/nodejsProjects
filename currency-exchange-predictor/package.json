@@ -1,0 +1,14 @@
+{
+  "name": "currency-exchange-predictor",
+  "version": "1.0.0",
+  "description": "currency exchange predictor app",
+  "main": "exchangePredict.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Long <longbaloca@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^11.0.0"
+  }
+}
