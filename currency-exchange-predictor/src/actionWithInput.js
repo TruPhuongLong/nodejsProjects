@@ -1,8 +1,8 @@
 
 // validator format of currency: it can be in range of rates
-function _formatValidator(from, to, rates) {
-    const currencies = Object.keys(rates)
-    if (currencies.indexOf(from) === -1 || currencies.indexOf(to) === -1) {
+function _formatValidator(from, to, currencies) {
+    const currencyKeys = Object.keys(currencies)
+    if (currencyKeys.indexOf(from) === -1 || currencyKeys.indexOf(to) === -1) {
         const errorValueFormat = 'currency invalid. use node exchangePredict --help to get currencyTemplate'
         return { error: errorValueFormat }
     }
@@ -10,7 +10,7 @@ function _formatValidator(from, to, rates) {
 }
 
 //===================================================Main====================================
-const { rates } = require('./exchangeRateDataTemplate');
+const { currencies } = require('./exchangeRateDataTemplate');
 
 const actionWithInput = (argv) => {
     let {from, to} = argv
@@ -18,7 +18,7 @@ const actionWithInput = (argv) => {
     to = String(to).toUpperCase();
 
     //value format invalid
-    const {error} = _formatValidator(from, to, rates);
+    const {error} = _formatValidator(from, to, currencies);
     if(error) return {error};
 
     return { from, to }
