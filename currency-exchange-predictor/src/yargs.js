@@ -1,23 +1,28 @@
 const yargs = require('yargs');
 const { currencies } = require('./exchangeRateDataTemplate'); 
 
+
 const argv = yargs
-    .command('exchangePredict', 'exchange currency predict', {
-        from: {
+    .option({
+        f: {
+            demand: true,
+            alias: 'from',
             describe: 'currency source',
-            demand: true,
-            alias: 'f'
+            string: true,
         },
-        to: {
+        t: {
+            demand: true,
+            alias: 'to',
             describe: 'currency target',
-            demand: true,
-            alias: 't'
+            string: true,
         },
-        rateTemplate: {
-            describe: JSON.stringify(Object.keys(currencies))
+        c: {
+            alias: 'currencies',
+            describe: JSON.stringify(currencies),
         }
     })
     .help()
+    .alias('help', 'h')
     .argv;
 
 module.exports = argv;
