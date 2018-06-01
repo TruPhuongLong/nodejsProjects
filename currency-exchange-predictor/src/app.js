@@ -1,6 +1,6 @@
 const actionWithInput = require('./actionWithInput');
 const argv = require('./yargs');
-const convert = require('./apiOpenExchangeRates');
+const requestRates = require('./apiOpenExchangeRates');
 
 // validator input:
 const input = actionWithInput(argv);
@@ -10,6 +10,7 @@ if(error){
 }else{
     console.log(`from: ${from}, to: ${to}`)
     // convert(from, to);
+    requestRates()
 }
 
 
