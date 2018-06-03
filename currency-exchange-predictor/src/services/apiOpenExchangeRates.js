@@ -1,12 +1,12 @@
 const app_id = 'a6e560adaf064de7814accbc1c6a934b';
 const request = require('request');
-const {now} = require('../middlewares/validations/timeValidator');
+const {formatDate} = require('../middlewares/validations/timeValidator');
 
 // request api get rates:
 const requestRates = (time = null) => {
 
     // default time is now:
-    if (!time) time = now();
+    if (!time) time = formatDate(new Date());
 
     return new Promise((resolve, reject) => {
         request({

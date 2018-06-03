@@ -1,5 +1,5 @@
 const yargs = require('yargs');
-const { currencies } = require('../assets/exchangeRateDataTemplate'); 
+const { currencies } = require('../assets/exchangeRateDataTemplate');
 
 const argv = yargs
     .option({
@@ -15,6 +15,16 @@ const argv = yargs
             describe: 'currency target',
             string: true,
         },
+        val: {
+            alias: 'value',
+            describe: 'value of currency source',
+            number: true,
+        },
+        ti: {
+            alias: 'time',
+            describe: 'time for rate. format example: "yyyy-MM-dd"',
+            string: true,
+        },
         'list Format Currency': {
             describe: JSON.stringify(currencies),
         }
@@ -23,4 +33,4 @@ const argv = yargs
     .alias('help', 'h')
     .argv;
 
-module.exports = {argv};
+module.exports = { argv };

@@ -1,9 +1,11 @@
+// control with yargs:
 const { argv } = require('./services/yargs');
+
 const validator = require('./middlewares/validations/validator');
 const getOutput = require('./middlewares/output');
 
 // validator input:
-const { error, from, to } = validator(argv);
+const { error, from, to, value, time } = validator(argv);
 
 // error input:
 if (error) {
@@ -11,11 +13,11 @@ if (error) {
 }
 
 // good to go:
-console.log(`from: ${from}, to: ${to}`)
-getOutput(from, to)
-    .then(strOutput => console.log(strOutput))
-    .catch(error => console.log('unable to get rate .', error))
-console.log('loading...')
+// console.log(`from: ${from}, to: ${to}`)
+// getOutput(from, to)
+//     .then(strOutput => console.log(strOutput))
+//     .catch(error => console.log('unable to get rate .', error))
+// console.log('loading...')
 
 
 
