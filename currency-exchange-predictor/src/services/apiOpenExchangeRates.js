@@ -1,16 +1,6 @@
 const app_id = 'a6e560adaf064de7814accbc1c6a934b';
 const request = require('request');
-
-// get current time: with format: yyyy-MM-dd
-function now() {
-    const time = new Date();
-    const year = time.getFullYear();
-    let month = time.getMonth() + 1; // getMonth() return range: 0-11 -> need + 1 -> 1 -12
-    month = month >= 10 ? month : `0${month}`; 
-    const date = time.getDate() >= 10 ? time.getDate() : `0${time.getDate()}`
-
-    return `${year}-${month}-${date}`
-}
+const {now} = require('../middlewares/validations/timeValidator');
 
 // request api get rates:
 const requestRates = (time = null) => {
@@ -33,5 +23,5 @@ const requestRates = (time = null) => {
         })
     })
 }
-
+// result ok is object: {USD: 1, NVD: 20, ...}
 module.exports = requestRates;
