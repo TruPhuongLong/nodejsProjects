@@ -5,7 +5,7 @@ const validator = require('./middlewares/validations/validator');
 const getOutput = require('./middlewares/output');
 
 // validator input:
-const { error, from, to, value, time } = validator(argv);
+let { error, from, to, value, time } = validator(argv);
 
 // error input:
 if (error) {
@@ -13,11 +13,12 @@ if (error) {
 }
 
 // good to go:
-// console.log(`from: ${from}, to: ${to}`)
-// getOutput(from, to)
-//     .then(strOutput => console.log(strOutput))
-//     .catch(error => console.log('unable to get rate .', error))
-// console.log('loading...')
+value = value ? value : 1
+console.log(`from: ${value} ${from}, to: ${to}`)
+getOutput(from, to, value, time)
+    .then(strOutput => console.log(strOutput))
+    .catch(error => console.log('unable to get rate .', error))
+console.log('loading...')
 
 
 

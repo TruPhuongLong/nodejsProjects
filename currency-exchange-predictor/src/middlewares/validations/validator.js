@@ -8,14 +8,15 @@ const validator = (argv) => {
     to = to.toUpperCase();
 
     //currency validator
-    const resultCurVal = currencyValidator(from, to, currencies);
-    if (resultCurVal.error) return resultCurVal;
+    var {error} = currencyValidator(from, to, currencies);
+    if (error) return {error};
 
-    //value validator : if value != number -> yargs validator return NaN, so not need validator.
+    //value validator : if value != number -> yargs validator return NaN
+    if(!value) return {error: 'value must be a number'}
 
     // time validator:
-    let resultTiVal = timeValidator(time)
-    if(resultTiVal.error) return resultTiVal;
+    var {error} = timeValidator(time)
+    if(error) return {error};
 
     // good to go:
     time = formatDate(new Date(time));
